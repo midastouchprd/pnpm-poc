@@ -1,0 +1,21 @@
+{
+  "name": "@real-agent/theme",
+  "version": "3.1.4",
+  "main": "./lib/cjs/index.js",
+  "module": "./lib/esm/index.js",
+  "types": "./lib/types/index.d.ts",
+  "scripts": {
+    "tsc": "cross-env NODE_ENV=production tsc",
+    "build": "cross-env NODE_ENV=production yarn build:js",
+    "build:js": "tsc && yarn build:js:cjs && yarn build:js:esm",
+    "build:js:cjs": "cross-env BABEL_ENV=cjs babel . --config-file \"../../../babel.config.js\" --out-dir lib/cjs --ignore \"./**/*.spec.tsx\",\"./__snapshots__/**\",\"./**/*.test.tsx\",\"./**/*.stories.tsx\",\"./__tests__/**\",\"./lib/**\" --extensions '.ts,.tsx'",
+    "build:js:esm": "cross-env BABEL_ENV=esm babel . --config-file \"../../../babel.config.js\" --out-dir lib/esm --ignore \"./**/*.spec.tsx\",\"./__snapshots__/**\",\"./**/*.test.tsx\",\"./**/*.stories.tsx\",\"./__tests__/**\",\"./lib/**\" --extensions '.ts,.tsx'"
+  },
+  "files": [
+    "lib"
+  ],
+  "dependencies": {
+    "@real-agent/utils": "^3.2.4",
+    "polished": "^3.6.2"
+  }
+}
